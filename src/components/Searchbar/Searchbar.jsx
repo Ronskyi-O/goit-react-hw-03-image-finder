@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { ImSearch } from "react-icons/im"
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 import { Header, SearchButton, SerchForm, Input } from "./Searchbar.styled";
 
 export class Searchbar extends Component {
@@ -19,9 +17,9 @@ export class Searchbar extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
+
         if (this.state.searchingImage.trim() === '') {
-            toast.error("Incert searching image name !");
-            return
+            return toast.error("Incert searching image name !");
         }
 
         this.props.onSubmit(this.state.searchingImage)
