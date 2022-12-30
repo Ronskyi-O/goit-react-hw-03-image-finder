@@ -20,7 +20,7 @@ export class App extends Component {
     return (
       <Container>
         <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery />
+        <ImageGallery searchingImageName={this.state.searchingImageName} />
         <ToastContainer position="top-center" autoClose={2000} />
       </Container >
     );
