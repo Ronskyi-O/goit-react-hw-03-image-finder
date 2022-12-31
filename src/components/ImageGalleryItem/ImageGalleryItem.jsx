@@ -1,10 +1,10 @@
 import React from "react";
 import { ImageGalleryListItem, Image } from './ImageGalleryItem.styled'
 
-export const ImageGalleryItem = () => {
+export const ImageGalleryItem = ({ webformatURL }) => {
     return (
         <ImageGalleryListItem>
-            <Image src="" alt="" />
+            <Image src={webformatURL} alt="" />
         </ImageGalleryListItem>
     )
 }
