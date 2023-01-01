@@ -1,12 +1,11 @@
 import React from "react";
-import { Button } from "./Button.styled";
+import { Button, ButtonWrapper } from "./Button.styled";
 
 export const ButtonLoadMore = () => {
     return (
-        <div>
+        <ButtonWrapper>
             <Button type="button">Load more</Button>
-        </div>
-
+        </ButtonWrapper>
     )
 }
 

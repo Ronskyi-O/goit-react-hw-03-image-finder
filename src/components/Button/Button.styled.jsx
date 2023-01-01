@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 
+export const ButtonWrapper = styled.div`
+display: flex;
+justify-content: center;
+`
+
 export const Button = styled.button`
   padding: 8px 16px;
   border-radius: 2px;
