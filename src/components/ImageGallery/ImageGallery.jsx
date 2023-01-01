@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { toast } from 'react-toastify';
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem"
-// import { ButtonLoadMore } from "components/Button/Button"
+import { ButtonLoadMore } from "components/Button/Button"
 import { Loader } from "components/Loader/Loader";
 import { ImageGalleryList } from "./ImageGallery.styled"
 
@@ -37,13 +37,18 @@ export class ImageGallery extends Component {
     render() {
         const { images, loading } = this.state
         return (
-            <ImageGalleryList>
-                {loading && <Loader />}
-                {images.map(({ id, webformatURL, largeImageURL }) => (
-                    <ImageGalleryItem key={id} webformatURL={webformatURL} largeImageURL={largeImageURL} />
-                ))}
-                {/* {images.length !== 0 && <ButtonLoadMore />} */}
-            </ImageGalleryList >)
+            <div>
+                <ImageGalleryList>
+                    {loading && <Loader />}
+                    {images.map(({ id, webformatURL, largeImageURL }) => (
+                        <ImageGalleryItem key={id} webformatURL={webformatURL} largeImageURL={largeImageURL} />
+                    ))}
+
+                </ImageGalleryList >
+                {images.length !== 0 && <ButtonLoadMore />}
+            </div>
+
+        )
     }
 }
 
