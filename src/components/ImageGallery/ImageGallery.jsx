@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { toast } from 'react-toastify';
+
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem"
 import { ButtonLoadMore } from "components/Button/Button"
 import { Loader } from "components/Loader/Loader";
+
 import { ImageGalleryList } from "./ImageGallery.styled"
 
 
@@ -21,11 +23,11 @@ export class ImageGallery extends Component {
         const { page, images } = this.state
 
         if (prevName !== newName) {
-            this.setState({ page: 1 })
+            this.setState({ images: [], page: 1 })
         }
 
         if (prevName !== newName || prevState.page !== page) {
-            this.setState({ loading: true, images: [] });
+            this.setState({ loading: true });
             fetch(`https://pixabay.com/api/?q=${newName}&page=${page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`)
                 .then(responce => {
                     if (responce.ok) {

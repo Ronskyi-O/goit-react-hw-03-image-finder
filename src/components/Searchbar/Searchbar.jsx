@@ -33,7 +33,6 @@ export class Searchbar extends Component {
     }
 
     render() {
-
         const { searchingImage } = this.state
 
         return (
