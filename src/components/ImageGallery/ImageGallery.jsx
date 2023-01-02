@@ -15,10 +15,6 @@ export class ImageGallery extends Component {
         page: 1,
     }
 
-    onClickLoadMore = () => {
-        this.setState(prevState => ({ page: prevState.page + 1 }))
-    }
-
     componentDidUpdate(prevProps, prevState) {
         const prevName = prevProps.searchingImageName
         const newName = this.props.searchingImageName
@@ -43,6 +39,10 @@ export class ImageGallery extends Component {
                 .catch(() => toast.error(`We don't have images ${newName}`))
                 .finally(() => this.setState({ loading: false }))
         }
+    }
+
+    onClickLoadMore = () => {
+        this.setState(prevState => ({ page: prevState.page + 1 }))
     }
 
     render() {

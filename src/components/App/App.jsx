@@ -9,10 +9,10 @@ import { ImageGallery } from "components/ImageGallery/ImageGallery"
 import { Container } from './App.styled'
 
 export class App extends Component {
-
   state = {
     searchingImageName: '',
   }
+
   handleFormSubmit = searchingImageName => {
     this.setState({ searchingImageName })
   }

@@ -1,13 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
+import { Modal } from "components/Modal/Modal";
 import { ImageGalleryListItem, Image } from './ImageGalleryItem.styled'
 
-export const ImageGalleryItem = ({ webformatURL }) => {
+export class ImageGalleryItem extends Component {
+    state = {
+        isModalOpen: false
+    }
 
+    openModal = () => {
+        this.setState({ isModalOpen: true })
+    }
 
+    closeModal = () => {
+        this.setState({ isModalOpen: false })
+    }
 
-    return (
-        <ImageGalleryListItem>
-            <Image src={webformatURL} alt="" />
-        </ImageGalleryListItem>
-    )
+    render() {
+        const { webformatURL, largeImageURL } = this.props
+        const { isModalOpen } = this.state
+        return (
+            <ImageGalleryListItem>
+                <Image src={webformatURL} alt="" onClick={this.openModal} />
+                {isModalOpen && <Modal largeImageURL={largeImageURL} onClose={this.closeModal} />}
+            </ImageGalleryListItem >
+        )
+    }
+
 }
