@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, ButtonWrapper } from "./Button.styled";
 
-export const ButtonLoadMore = () => {
+export const ButtonLoadMore = ({ onClickLoadMore }) => {
     return (
         <ButtonWrapper>
-            <Button type="button">Load more</Button>
+            <Button type="button" onClick={onClickLoadMore}>Load more</Button>
         </ButtonWrapper>
     )
 }

@@ -29,7 +29,8 @@ export const Button = styled.button`
 
     &:hover {
       background-color: #303f9f;
-    }
+    };
+    
     &:focus {
       background-color: #303f9f;
     }

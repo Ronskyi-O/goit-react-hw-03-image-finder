@@ -6,20 +6,31 @@ import { Loader } from "components/Loader/Loader";
 import { ImageGalleryList } from "./ImageGallery.styled"
 
 
+const API_KEY = '31359912-5b88546d239f41508b7e3830d'
+
 export class ImageGallery extends Component {
     state = {
         images: [],
         loading: false,
+        page: 1,
     }
 
-    componentDidUpdate(prevProps, _) {
+    onClickLoadMore = () => {
+        this.setState(prevState => ({ page: prevState.page + 1 }))
+    }
+
+    componentDidUpdate(prevProps, prevState) {
         const prevName = prevProps.searchingImageName
         const newName = this.props.searchingImageName
-        const API_KEY = '31359912-5b88546d239f41508b7e3830d'
+        const { page, images } = this.state
 
         if (prevName !== newName) {
+            this.setState({ page: 1 })
+        }
+
+        if (prevName !== newName || prevState.page !== page) {
             this.setState({ loading: true, images: [] });
-            fetch(`https://pixabay.com/api/?q=${newName}&page=1&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`)
+            fetch(`https://pixabay.com/api/?q=${newName}&page=${page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`)
                 .then(responce => {
                     if (responce.ok) {
                         return responce.json()
@@ -28,7 +39,7 @@ export class ImageGallery extends Component {
                         new Error(toast.error(`We don't have images ${newName}`))
                     )
                 })
-                .then(image => this.setState({ images: image.hits }))
+                .then(image => this.setState((prevState) => ({ images: [...images, ...image.hits] })))
                 .catch(() => toast.error(`We don't have images ${newName}`))
                 .finally(() => this.setState({ loading: false }))
         }
@@ -43,15 +54,12 @@ export class ImageGallery extends Component {
                     {images.map(({ id, webformatURL, largeImageURL }) => (
                         <ImageGalleryItem key={id} webformatURL={webformatURL} largeImageURL={largeImageURL} />
                     ))}
-
                 </ImageGalleryList >
-                {images.length !== 0 && <ButtonLoadMore />}
+                {images.length !== 0 && <ButtonLoadMore onClickLoadMore={this.onClickLoadMore} />}
             </div>
 
         )
     }
 }
-
-
 
 
