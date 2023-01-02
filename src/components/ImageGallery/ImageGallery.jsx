@@ -49,8 +49,9 @@ export class ImageGallery extends Component {
         const { images, loading } = this.state
         return (
             <div>
+                {loading && <Loader />}
                 <ImageGalleryList>
-                    {loading && <Loader />}
+
                     {images.map(({ id, webformatURL, largeImageURL }) => (
                         <ImageGalleryItem key={id} webformatURL={webformatURL} largeImageURL={largeImageURL} />
                     ))}
