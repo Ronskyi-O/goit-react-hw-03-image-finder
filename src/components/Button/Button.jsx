@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
 import { Button, ButtonWrapper } from "./Button.styled";
 
@@ -10,3 +11,6 @@ export const ButtonLoadMore = ({ onClickLoadMore }) => {
     )
 }
 
+ButtonLoadMore.propTypes = {
+    onClickLoadMore: PropTypes.func.isRequired,
+}

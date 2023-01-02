@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types'
 
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem"
 import { ButtonLoadMore } from "components/Button/Button"
@@ -65,4 +66,8 @@ export class ImageGallery extends Component {
     }
 }
 
+
+ImageGallery.propTypes = {
+    searchingImageName: PropTypes.string.isRequired,
+}
 
